@@ -1,4 +1,9 @@
 import { Component } from '@angular/core';
+import { CandidateStoreService } from 'src/app/common/state/candidate-store.service';
+import { Candidate } from 'src/app/model/candidate';
+import { Observable } from 'rxjs';
+import { VoterStoreService } from '../../common/state/voter-store.service';
+import { Voter } from 'src/app/model/voter';
 
 @Component({
   selector: 'app-overview',
@@ -7,25 +12,17 @@ import { Component } from '@angular/core';
 })
 export class OverviewComponent {
 
-  constructor(){
+  candidates$: Observable<Candidate[]> = this.candidateStoreService.candidates$;
+  voters$: Observable<Voter[]> = this.voterStoreService.voters$;
 
+  constructor(private candidateStoreService: CandidateStoreService, private voterStoreService: VoterStoreService) { }
+
+
+  addCandidate() {
+    this.candidateStoreService.addCandidate({ name: 'lol', numOfVotes: 0 });
   }
 
-  dummyVoters = [
-    { name: 'Peppa', voted: false },
-    { name: 'Rumcajs', voted: false }
-  ];
-
-  dummyCandidates = [
-    { name: 'Johnny Bravo', numOfVotes: 2 },
-    { name: 'Pluto', numOfVotes: 5 }
-  ];
-
-  addCandidate(){
-    this.dummyCandidates = [...this.dummyCandidates, {name: 'lol', numOfVotes: 0}]
-  }
-
-  addVoter(){
-    this.dummyVoters = [...this.dummyVoters, {name: 'lol', voted: false}];
+  addVoter() {
+    this.voterStoreService.addVoter({ name: 'lol', voted: false });
   }
 }

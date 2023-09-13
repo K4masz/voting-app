@@ -1,11 +1,11 @@
 <div style="display: flex; flex-direction: row; gap:20px; justify-content: space-around;">
 
   <div style="display:flex; flex-direction: column;">
-    <app-voters-table [dataSource]="dummyVoters" (addEvent)="addVoter()"></app-voters-table>
+    <app-voters-table [dataSource]="(voters$ | async) ?? []" (addEvent)="addVoter()"></app-voters-table>
   </div>
 
   <div>
-    <app-candidates-table [dataSource]="dummyCandidates" (addEvent)="addCandidate()"></app-candidates-table>
+    <app-candidates-table [dataSource]="(candidates$ | async) ?? []" (addEvent)="addCandidate()"></app-candidates-table>
   </div>
 </div>
 

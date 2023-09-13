@@ -8,7 +8,7 @@ import { Candidate } from 'src/app/model/candidate';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class CandidatesTableComponent {
-  @Input('dataSource') dataSource: Candidate[] = []
+  @Input('dataSource') dataSource: Candidate[] = [];
 
   @Output('addEvent') addCandidateEvent: EventEmitter<void> = new EventEmitter<void>();
 
