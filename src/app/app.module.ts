@@ -12,13 +12,15 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatSelectModule } from '@angular/material/select';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { ReactiveFormsModule } from '@angular/forms';
+import { VotingFormComponent } from './presentational/voting-form/voting-form.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     OverviewComponent,
-    VotingComponent
+    VotingComponent,
+    VotingFormComponent
   ],
   imports: [
     BrowserModule,

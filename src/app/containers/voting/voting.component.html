@@ -1,27 +1,3 @@
 <h1>Vote!</h1>
 
-<form [formGroup]="votingForm" (ngSubmit)="submit()" style="display: flex; flex-direction: row; gap: 2rem; align-items: center;">
-
-  <mat-form-field>
-    <mat-label>I am</mat-label>
-    <mat-select formControlName="voter" disableRipple>
-      <mat-option *ngFor="let voter of voters"
-                  [value]="voter.name">
-        {{voter.name}}
-      </mat-option>
-    </mat-select>
-  </mat-form-field>
-
-  <mat-form-field>
-    <mat-label>I vote for</mat-label>
-    <mat-select formControlName="candidate" disableRipple>
-      <mat-option *ngFor="let candidate of candidates"
-                  [value]="candidate.name">
-        {{candidate.name}}
-      </mat-option>
-    </mat-select>
-  </mat-form-field>
-
-  <button mat-raised-button>Submit!</button>
-
-</form>
+<app-voting-form [voters]="voters" [candidates]="candidates" (voteEvent)="onVote($event)"></app-voting-form>

@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-voting',
@@ -18,16 +17,12 @@ export class VotingComponent {
     { name: 'Pluto', numOfVotes: 5 }
   ];
 
-  votingForm:FormGroup = this.formBuilder.group({
-    voter: [''],
-    candidate: ['']
-  })
+  constructor() {
 
-constructor(private formBuilder: FormBuilder){
+  }
 
-}
+  onVote(vote:{voter: string, candidate: string}) {
+    console.log(vote)
+  }
 
-submit(){
-  console.log(this.votingForm.value)
-}
 }
