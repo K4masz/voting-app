@@ -17,8 +17,19 @@ export class CandidateStoreService {
     ]);
   }
 
-  addCandidate(candidate: Candidate){
+  addCandidate(candidate: Candidate): void {
     this._candidates.next([...this._candidates.getValue(), candidate])
+  }
+
+  increaseVotesNumber(candidateName: string): void {
+
+    const currentCandidates: Candidate[] = this._candidates.getValue();
+
+    const candidate = currentCandidates.find(candidate => candidate.name === candidateName)!;
+    const newCandidates = currentCandidates.filter(candidate => candidate.name !== candidateName);
+    candidate.numOfVotes += 1;
+
+    this._candidates.next([...newCandidates, candidate])
   }
 
 }
