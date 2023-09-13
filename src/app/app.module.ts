@@ -8,13 +8,17 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatTableModule } from '@angular/material/table';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
+import { VotersTableComponent } from './presentational/voters-table/voters-table.component';
+import { CandidatesTableComponent } from './presentational/candidates-table/candidates-table.component';
 import { MatDialogModule } from '@angular/material/dialog';
 
 @NgModule({
   declarations: [
     AppComponent,
     OverviewComponent,
-    VotingComponent
+    VotingComponent,
+    VotersTableComponent,
+    CandidatesTableComponent
   ],
   imports: [
     BrowserModule,
