@@ -1,0 +1,26 @@
+<div>Candidates
+  <button mat-button
+          (click)="addCandidate()">+</button>
+</div>
+<table mat-table
+       [dataSource]="dataSource">
+
+  <ng-container matColumnDef="name">
+    <th mat-header-cell
+        *matHeaderCellDef>Name</th>
+    <td mat-cell
+        *matCellDef="let candidate">{{candidate.name}}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="numOfVotes">
+    <th mat-header-cell
+        *matHeaderCellDef>Votes</th>
+    <td mat-cell
+        *matCellDef="let candidate">{{candidate.numOfVotes}}</td>
+  </ng-container>
+
+  <tr mat-header-row
+      *matHeaderRowDef="candidateTablesColumns"></tr>
+  <tr mat-row
+      *matRowDef="let row; columns: candidateTablesColumns"></tr>
+</table>
