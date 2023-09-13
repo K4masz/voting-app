@@ -1,1 +1,3 @@
-<p>voting works!</p>
+<h1>Vote!</h1>
+
+<app-voting-form [voters]="voters" [candidates]="candidates" (voteEvent)="onVote($event)"></app-voting-form>

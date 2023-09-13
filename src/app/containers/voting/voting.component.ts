@@ -7,4 +7,22 @@ import { Component } from '@angular/core';
 })
 export class VotingComponent {
 
+  voters = [
+    { name: 'Peppa', voted: false },
+    { name: 'Rumcajs', voted: false }
+  ];
+
+  candidates = [
+    { name: 'Johnny Bravo', numOfVotes: 2 },
+    { name: 'Pluto', numOfVotes: 5 }
+  ];
+
+  constructor() {
+
+  }
+
+  onVote(vote:{voter: string, candidate: string}) {
+    console.log(vote)
+  }
+
 }
