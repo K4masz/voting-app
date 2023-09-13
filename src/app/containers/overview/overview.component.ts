@@ -7,6 +7,11 @@ import { Component } from '@angular/core';
 })
 export class OverviewComponent {
 
+  constructor(){
+
+  }
+
+  //To seperate component
   votersTableColumns = ['name', 'voted'];
 
   dummyVoters = [
@@ -14,6 +19,7 @@ export class OverviewComponent {
     { name: 'Rumcajs', voted: false }
   ];
 
+  //To seperate component
   candidateTablesColumns = ['name', 'numOfVotes'];
 
   dummyCandidates = [
@@ -21,4 +27,11 @@ export class OverviewComponent {
     { name: 'Pluto', numOfVotes: 5 }
   ];
 
+  addCandidate(){
+    this.dummyCandidates = [...this.dummyCandidates, {name: 'lol', numOfVotes: 0}]
+  }
+
+  addVoter(){
+    this.dummyVoters = [...this.dummyVoters, {name: 'lol', voted: false}];
+  }
 }
