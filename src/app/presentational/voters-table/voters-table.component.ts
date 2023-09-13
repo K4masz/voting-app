@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input, Output, EventEmitter } from '@angular/core';
 import { Voter } from 'src/app/model/voter';
 
 @Component({
@@ -9,4 +9,12 @@ import { Voter } from 'src/app/model/voter';
 })
 export class VotersTableComponent {
   @Input('dataSource') dataSource: Voter[] = [];
+
+  @Output('addEvent') addVoterEvent: EventEmitter<void> = new EventEmitter<void>();
+
+  votersTableColumns = ['name', 'voted'];
+
+  addVoter(){
+    this.addVoterEvent.emit();
+  }
 }

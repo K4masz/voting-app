@@ -1,1 +1,26 @@
-<p>voters-table works!</p>
+<div>Voters
+  <button mat-button
+          (click)="addVoter()">+</button>
+</div>
+<table mat-table
+       [dataSource]="dataSource">
+
+  <ng-container matColumnDef="name">
+    <th mat-header-cell
+        *matHeaderCellDef>Name</th>
+    <td mat-cell
+        *matCellDef="let voter">{{voter.name}}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="voted">
+    <th mat-header-cell
+        *matHeaderCellDef>Has voted</th>
+    <td mat-cell
+        *matCellDef="let voter">{{voter.voted}}</td>
+  </ng-container>
+
+  <tr mat-header-row
+      *matHeaderRowDef="votersTableColumns"></tr>
+  <tr mat-row
+      *matRowDef="let row; columns: votersTableColumns"></tr>
+</table>

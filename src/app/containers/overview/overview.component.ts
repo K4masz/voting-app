@@ -11,16 +11,10 @@ export class OverviewComponent {
 
   }
 
-  //To seperate component
-  votersTableColumns = ['name', 'voted'];
-
   dummyVoters = [
     { name: 'Peppa', voted: false },
     { name: 'Rumcajs', voted: false }
   ];
-
-  //To seperate component
-  candidateTablesColumns = ['name', 'numOfVotes'];
 
   dummyCandidates = [
     { name: 'Johnny Bravo', numOfVotes: 2 },
