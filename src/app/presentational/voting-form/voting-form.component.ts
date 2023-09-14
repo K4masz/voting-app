@@ -27,5 +27,7 @@ export class VotingFormComponent {
 
   submit(): void {
     this.voteEvent.emit(this.votingForm.value);
+    this.votingForm.reset();
+    this.votingForm.updateValueAndValidity();
   }
 }

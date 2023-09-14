@@ -15,7 +15,8 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { ReactiveFormsModule } from '@angular/forms';
 import { VotingFormComponent } from './presentational/voting-form/voting-form.component';
-
+import { ErrorStateMatcher } from '@angular/material/core';
+import { CustomMaterialFormsMatcher } from './utils/error-state-matcher/custom-material-state-matcher';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,9 @@ import { VotingFormComponent } from './presentational/voting-form/voting-form.co
     MatSelectModule,
     ReactiveFormsModule
   ],
-  providers: [],
+  providers: [
+    { provide: ErrorStateMatcher, useClass: CustomMaterialFormsMatcher }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
