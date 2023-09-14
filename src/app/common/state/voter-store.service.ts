@@ -4,8 +4,8 @@ import { Voter } from 'src/app/model/voter';
 
 export const VOTER_STORE_INITAL_STATE: Voter[] = [
   { name: 'Peppa', voted: false },
-  { name: 'Rumcajs', voted: false },
-  { name: 'Rebel', voted: true }
+  { name: 'Rebel', voted: true },
+  { name: 'Rumcajs', voted: false }
 ]
 
 @Injectable({
