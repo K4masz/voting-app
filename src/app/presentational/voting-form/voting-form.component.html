@@ -8,7 +8,7 @@
         {{voter.name}}
       </mat-option>
     </mat-select>
-    <mat-error *ngIf="votingForm.controls['voter'].hasError('required')">
+    <mat-error *ngIf="voterControl.hasError('required')">
       This field is required
     </mat-error>
   </mat-form-field>
@@ -21,7 +21,7 @@
         {{candidate.name}}
       </mat-option>
     </mat-select>
-    <mat-error *ngIf="votingForm.controls['candidate'].hasError('required')">
+    <mat-error *ngIf="candidateControl.hasError('required')">
       This field is required
     </mat-error>
   </mat-form-field>
