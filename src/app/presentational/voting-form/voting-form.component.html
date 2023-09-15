@@ -1,8 +1,11 @@
-<form class="voting-form__form" [formGroup]="votingForm" (ngSubmit)="submit()">
+<form class="voting-form__form"
+      [formGroup]="votingForm"
+      (ngSubmit)="submit()">
 
   <mat-form-field>
     <mat-label>I am</mat-label>
-    <mat-select formControlName="voter" disableRipple>
+    <mat-select formControlName="voter"
+                disableRipple>
       <mat-option *ngFor="let voter of voters"
                   [value]="voter.name">
         {{voter.name}}
@@ -15,7 +18,8 @@
 
   <mat-form-field>
     <mat-label>I vote for</mat-label>
-    <mat-select formControlName="candidate" disableRipple>
+    <mat-select formControlName="candidate"
+                disableRipple>
       <mat-option *ngFor="let candidate of candidates"
                   [value]="candidate.name">
         {{candidate.name}}
@@ -26,6 +30,7 @@
     </mat-error>
   </mat-form-field>
 
-  <button mat-raised-button [disabled]="!votingForm.valid">Submit!</button>
+  <button mat-raised-button
+          [disabled]="!votingForm.valid">Submit!</button>
 
 </form>

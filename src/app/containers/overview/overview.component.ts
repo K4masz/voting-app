@@ -31,7 +31,6 @@ export class OverviewComponent {
         this.candidateStoreService.addCandidate(newCandidate);
       }
     );
-
   }
 
   addVoter() {

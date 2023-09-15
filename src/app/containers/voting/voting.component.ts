@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
-import { CandidateStoreService } from '../../common/state/candidate-store.service';
-import { VoterStoreService } from '../../common/state/voter-store.service';
-import { Voter } from 'src/app/model/voter';
+import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { VotingService } from 'src/app/common/services/voting.service';
-import { Observable } from 'rxjs';
+import { Vote } from 'src/app/model/vote';
+import { Voter } from 'src/app/model/voter';
+import { CandidateStoreService } from '../../common/state/candidate-store.service';
+import { VoterStoreService } from '../../common/state/voter-store.service';
 
 @Component({
   selector: 'app-voting',
@@ -19,11 +20,9 @@ export class VotingComponent {
 
   candidates$ = this.candidateStoreService.candidates$;
 
-  constructor(private candidateStoreService: CandidateStoreService, private voterStoreService: VoterStoreService, private votingService: VotingService) {
+  constructor(private candidateStoreService: CandidateStoreService, private voterStoreService: VoterStoreService, private votingService: VotingService) {}
 
-  }
-
-  onVote(vote: { voter: string, candidate: string }) {
+  onVote(vote: Vote) {
     this.votingService.placeVote(vote);
   }
 
