@@ -1,4 +1,3 @@
-
 import { SpectatorService, SpyObject, createServiceFactory, mockProvider } from '@ngneat/spectator/jest';
 import { Vote } from 'src/app/model/vote';
 import { CandidateStoreService } from '../state/candidate-store.service';
@@ -12,7 +11,7 @@ describe('VotingService', () => {
   let candidateStoreService: SpyObject<CandidateStoreService>;
   let voterStoreService: SpyObject<VoterStoreService>;
 
-  const createService = createServiceFactory({service: VotingService, providers: [mockProvider(CandidateStoreService), mockProvider(VoterStoreService)]});
+  const createService = createServiceFactory({ service: VotingService, providers: [mockProvider(CandidateStoreService), mockProvider(VoterStoreService)] });
 
   beforeEach(() => {
     spectator = createService();
@@ -26,9 +25,9 @@ describe('VotingService', () => {
   });
 
   it('should place a vote', () => {
-    const vote: Vote = { voter: 'ala', candidate: 'kot'}
+    const vote: Vote = { voter: 'ala', candidate: 'kot' };
 
-    service.placeVote(vote)
+    service.placeVote(vote);
     expect(candidateStoreService.increaseVotesNumber).toHaveBeenCalledWith(vote.candidate);
     expect(voterStoreService.markAsHasVoted).toHaveBeenCalledWith(vote.voter);
   });

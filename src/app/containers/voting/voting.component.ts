@@ -10,20 +10,20 @@ import { VoterStoreService } from '../../common/state/voter-store.service';
 @Component({
   selector: 'app-voting',
   templateUrl: './voting.component.html',
-  styleUrls: ['./voting.component.scss']
+  styleUrls: ['./voting.component.scss'],
 })
 export class VotingComponent {
-
-  votersNotVoted$: Observable<Voter[]> = this.voterStoreService.voters$.pipe(
-    map((voters: Voter[]) => voters.filter(voter => !voter.voted))
-  );
+  votersNotVoted$: Observable<Voter[]> = this.voterStoreService.voters$.pipe(map((voters: Voter[]) => voters.filter(voter => !voter.voted)));
 
   candidates$ = this.candidateStoreService.candidates$;
 
-  constructor(private candidateStoreService: CandidateStoreService, private voterStoreService: VoterStoreService, private votingService: VotingService) {}
+  constructor(
+    private candidateStoreService: CandidateStoreService,
+    private voterStoreService: VoterStoreService,
+    private votingService: VotingService
+  ) {}
 
   onVote(vote: Vote) {
     this.votingService.placeVote(vote);
   }
-
 }

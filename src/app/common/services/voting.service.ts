@@ -4,13 +4,15 @@ import { CandidateStoreService } from '../state/candidate-store.service';
 import { VoterStoreService } from '../state/voter-store.service';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class VotingService {
+  constructor(
+    private candidateStoreService: CandidateStoreService,
+    private voterStoreService: VoterStoreService
+  ) {}
 
-  constructor(private candidateStoreService: CandidateStoreService, private voterStoreService: VoterStoreService) { }
-
-  placeVote(vote: Vote){
+  placeVote(vote: Vote) {
     this.candidateStoreService.increaseVotesNumber(vote.candidate);
     this.voterStoreService.markAsHasVoted(vote.voter);
   }

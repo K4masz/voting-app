@@ -1,4 +1,3 @@
-
 import { MatDialog } from '@angular/material/dialog';
 import { SpectatorService, SpyObject, createServiceFactory, mockProvider } from '@ngneat/spectator/jest';
 import { DialogService } from './dialog.service';
@@ -9,13 +8,13 @@ describe('DialogService', () => {
   let spectator: SpectatorService<DialogService>;
   let service: DialogService;
 
-  let dialog: SpyObject<MatDialog>
+  let dialog: SpyObject<MatDialog>;
 
-  const createService = createServiceFactory({service: DialogService, providers: [mockProvider(MatDialog)]});
+  const createService = createServiceFactory({ service: DialogService, providers: [mockProvider(MatDialog)] });
 
   beforeEach(() => {
     spectator = createService();
-    service = spectator.service
+    service = spectator.service;
     dialog = spectator.inject(MatDialog);
   });
 
@@ -23,7 +22,7 @@ describe('DialogService', () => {
     expect(service).toBeTruthy();
   });
 
-  it('should open candidate creation dialog', ()=>{
+  it('should open candidate creation dialog', () => {
     service.openCandidateCreationDialog();
 
     expect(dialog.open).toHaveBeenCalled();

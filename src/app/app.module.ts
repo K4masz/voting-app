@@ -29,23 +29,10 @@ import { CustomMaterialFormsMatcher } from './utils/error-state-matcher/custom-m
     VotersTableComponent,
     CandidatesTableComponent,
     VoterCreationFormDialogComponent,
-    CandidateCreationFormDialogComponent
+    CandidateCreationFormDialogComponent,
   ],
-  imports: [
-    BrowserModule,
-    BrowserAnimationsModule,
-    MatTableModule,
-    MatButtonModule,
-    MatIconModule,
-    MatDialogModule,
-    MatFormFieldModule,
-    MatSelectModule,
-    ReactiveFormsModule,
-    MatInputModule
-  ],
-  providers: [
-    { provide: ErrorStateMatcher, useClass: CustomMaterialFormsMatcher }
-  ],
-  bootstrap: [AppComponent]
+  imports: [BrowserModule, BrowserAnimationsModule, MatTableModule, MatButtonModule, MatIconModule, MatDialogModule, MatFormFieldModule, MatSelectModule, ReactiveFormsModule, MatInputModule],
+  providers: [{ provide: ErrorStateMatcher, useClass: CustomMaterialFormsMatcher }],
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

@@ -8,10 +8,9 @@ import { Voter } from 'src/app/model/voter';
   selector: 'app-voting-form',
   templateUrl: './voting-form.component.html',
   styleUrls: ['./voting-form.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class VotingFormComponent {
-
   @Input() voters: Voter[] = [];
   @Input() candidates: Candidate[] = [];
 
@@ -19,10 +18,10 @@ export class VotingFormComponent {
 
   votingForm: FormGroup = this.formBuilder.group({
     voter: ['', [Validators.required]],
-    candidate: ['', [Validators.required]]
-  })
+    candidate: ['', [Validators.required]],
+  });
 
-  constructor(private formBuilder: FormBuilder) { }
+  constructor(private formBuilder: FormBuilder) {}
 
   submit(): void {
     this.voteEvent.emit(this.votingForm.value);

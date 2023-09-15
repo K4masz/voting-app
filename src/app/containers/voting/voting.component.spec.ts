@@ -1,4 +1,3 @@
-
 import { Spectator, SpyObject, createComponentFactory, mockProvider } from '@ngneat/spectator/jest';
 import { MockComponent } from 'ng-mocks';
 import { VotingService } from 'src/app/common/services/voting.service';
@@ -12,7 +11,7 @@ describe('VotingComponent', () => {
 
   let votingService: SpyObject<VotingService>;
 
-  const createComponent = createComponentFactory({ component: VotingComponent, imports:[MockComponent(VotingFormComponent)],  providers: [mockProvider(VotingService)] });
+  const createComponent = createComponentFactory({ component: VotingComponent, imports: [MockComponent(VotingFormComponent)], providers: [mockProvider(VotingService)] });
 
   beforeEach(() => {
     spectator = createComponent();
@@ -25,7 +24,7 @@ describe('VotingComponent', () => {
   });
 
   it('should place a vote', () => {
-    const vote: Vote = {voter: 'John', candidate: 'newman'};
+    const vote: Vote = { voter: 'John', candidate: 'newman' };
     component.onVote(vote);
 
     expect(votingService.placeVote).toHaveBeenCalled();

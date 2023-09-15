@@ -12,36 +12,35 @@ import { DialogService } from '../../utils/dialog/dialog.service';
 @Component({
   selector: 'app-overview',
   templateUrl: './overview.component.html',
-  styleUrls: ['./overview.component.scss']
+  styleUrls: ['./overview.component.scss'],
 })
 export class OverviewComponent {
-
   candidates$: Observable<Candidate[]> = this.candidateStoreService.candidates$;
   voters$: Observable<Voter[]> = this.voterStoreService.voters$;
 
-  constructor(private candidateStoreService: CandidateStoreService, private voterStoreService: VoterStoreService, private dialogService: DialogService) { }
+  constructor(
+    private candidateStoreService: CandidateStoreService,
+    private voterStoreService: VoterStoreService,
+    private dialogService: DialogService
+  ) {}
 
   addCandidate() {
     const creationDialogRef: MatDialogRef<CandidateCreationFormDialogComponent> = this.dialogService.openCandidateCreationDialog();
     const afterDialogClosed$ = creationDialogRef.afterClosed();
 
-    afterDialogClosed$.pipe(filter(value => !!value)).subscribe(
-      (newCandidateData: { name: string }) => {
-        const newCandidate: Candidate = { name: newCandidateData.name, numOfVotes: 0 };
-        this.candidateStoreService.addCandidate(newCandidate);
-      }
-    );
+    afterDialogClosed$.pipe(filter(value => !!value)).subscribe((newCandidateData: { name: string }) => {
+      const newCandidate: Candidate = { name: newCandidateData.name, numOfVotes: 0 };
+      this.candidateStoreService.addCandidate(newCandidate);
+    });
   }
 
   addVoter() {
     const creationDialogRef: MatDialogRef<VoterCreationFormDialogComponent> = this.dialogService.openVoterCreationDialog();
     const afterDialogClosed$ = creationDialogRef.afterClosed();
 
-    afterDialogClosed$.pipe(filter(value => !!value)).subscribe(
-      (newVoterData: { name: string }) => {
-        const newVoter: Voter = { name: newVoterData.name, voted: false };
-        this.voterStoreService.addVoter(newVoter);
-      }
-    );
+    afterDialogClosed$.pipe(filter(value => !!value)).subscribe((newVoterData: { name: string }) => {
+      const newVoter: Voter = { name: newVoterData.name, voted: false };
+      this.voterStoreService.addVoter(newVoter);
+    });
   }
 }

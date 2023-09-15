@@ -7,14 +7,18 @@ import { CandidateStoreService } from 'src/app/common/state/candidate-store.serv
 import { checkIfCandidateNameUnique } from 'src/app/common/validators/validators';
 import { CandidateCreationFormDialogComponent } from './candidate-creation-form-dialog.component';
 
-
 describe('CandidateCreationFormDialogComponent', () => {
   let spectator: Spectator<CandidateCreationFormDialogComponent>;
   let component: CandidateCreationFormDialogComponent;
 
   let candidateStoreService: SpyObject<CandidateStoreService>;
 
-  const createComponent = createComponentFactory({ component: CandidateCreationFormDialogComponent, providers: [mockProvider(CandidateStoreService)], imports: [ReactiveFormsModule], declarations: [MockComponent(MatFormField), MockDirective(MatDialogContent), MockDirective(MatLabel), MockDirective(MatError), MockDirective(MatDialogActions), MockDirective(MatDialogClose)] });
+  const createComponent = createComponentFactory({
+    component: CandidateCreationFormDialogComponent,
+    providers: [mockProvider(CandidateStoreService)],
+    imports: [ReactiveFormsModule],
+    declarations: [MockComponent(MatFormField), MockDirective(MatDialogContent), MockDirective(MatLabel), MockDirective(MatError), MockDirective(MatDialogActions), MockDirective(MatDialogClose)],
+  });
 
   beforeEach(() => {
     spectator = createComponent();
@@ -31,9 +35,8 @@ describe('CandidateCreationFormDialogComponent', () => {
 
     const nameFormControl = component.theForm.controls['name'];
 
-    expect(nameFormControl).toBeTruthy()
+    expect(nameFormControl).toBeTruthy();
     expect(nameFormControl.hasValidator(Validators.required)).toBeTruthy();
     expect(nameFormControl.hasAsyncValidator(checkIfCandidateNameUnique(candidateStoreService)));
   });
-
 });

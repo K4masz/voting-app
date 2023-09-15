@@ -9,20 +9,18 @@ export function checkIfVoterNameUnique(service: VoterStoreService): AsyncValidat
   return (control: AbstractControl): Observable<ValidationErrors | null> => {
     return service.voters$.pipe(
       take(1),
-      map((voters: Voter[]) => voters.map((voters: Voter) => voters.name)
-        ),
-        map((names: string[]) => names.includes(control.value) ? {'not-unique': true } : null)
+      map((voters: Voter[]) => voters.map((voters: Voter) => voters.name)),
+      map((names: string[]) => (names.includes(control.value) ? { 'not-unique': true } : null))
     );
-  }
+  };
 }
 
 export function checkIfCandidateNameUnique(service: CandidateStoreService): AsyncValidatorFn {
   return (control: AbstractControl): Observable<ValidationErrors | null> => {
     return service.candidates$.pipe(
       take(1),
-      map((candidates: Candidate[]) => candidates.map((candidate: Candidate) => candidate.name)
-        ),
-        map((names: string[]) => names.includes(control.value) ? {'not-unique': true } : null)
+      map((candidates: Candidate[]) => candidates.map((candidate: Candidate) => candidate.name)),
+      map((names: string[]) => (names.includes(control.value) ? { 'not-unique': true } : null))
     );
-  }
+  };
 }

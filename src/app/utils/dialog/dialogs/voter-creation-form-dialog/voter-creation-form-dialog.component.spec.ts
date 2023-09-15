@@ -13,7 +13,12 @@ describe('VoterCreationFormDialogComponent', () => {
 
   let candidateStoreService: SpyObject<VoterStoreService>;
 
-  const createComponent = createComponentFactory({component: VoterCreationFormDialogComponent, providers:[mockProvider(VoterStoreService)], imports:[ReactiveFormsModule], declarations:[MockComponent(MatFormField),MockDirective(MatDialogContent), MockDirective(MatLabel), MockDirective(MatError), MockDirective(MatDialogActions), MockDirective(MatDialogClose)]});
+  const createComponent = createComponentFactory({
+    component: VoterCreationFormDialogComponent,
+    providers: [mockProvider(VoterStoreService)],
+    imports: [ReactiveFormsModule],
+    declarations: [MockComponent(MatFormField), MockDirective(MatDialogContent), MockDirective(MatLabel), MockDirective(MatError), MockDirective(MatDialogActions), MockDirective(MatDialogClose)],
+  });
 
   beforeEach(() => {
     spectator = createComponent();
@@ -30,9 +35,8 @@ describe('VoterCreationFormDialogComponent', () => {
 
     const nameFormControl = component.theForm.controls['name'];
 
-    expect(nameFormControl).toBeTruthy()
+    expect(nameFormControl).toBeTruthy();
     expect(nameFormControl.hasValidator(Validators.required)).toBeTruthy();
     expect(nameFormControl.hasAsyncValidator(checkIfVoterNameUnique(candidateStoreService)));
   });
-
 });

@@ -4,11 +4,10 @@ import { CandidateCreationFormDialogComponent } from './dialogs/candidate-creati
 import { VoterCreationFormDialogComponent } from './dialogs/voter-creation-form-dialog/voter-creation-form-dialog.component';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class DialogService {
-
-  constructor(private dialog: MatDialog) { }
+  constructor(private dialog: MatDialog) {}
 
   openCandidateCreationDialog(): MatDialogRef<CandidateCreationFormDialogComponent> {
     return this.dialog.open(CandidateCreationFormDialogComponent);

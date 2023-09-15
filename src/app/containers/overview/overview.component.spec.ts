@@ -17,29 +17,27 @@ describe('OverviewComponent', () => {
 
   const createComponent = createComponentFactory({
     component: OverviewComponent,
-    declarations: [
-      MockComponent(VotersTableComponent),
-      MockComponent(CandidatesTableComponent)],
+    declarations: [MockComponent(VotersTableComponent), MockComponent(CandidatesTableComponent)],
     providers: [
       mockProvider(DialogService, {
         openVoterCreationDialog: () => {
           return {
             afterClosed: () => {
-              return of({ name: 'John' })
-            }
-          }
+              return of({ name: 'John' });
+            },
+          };
         },
         openCandidateCreationDialog: () => {
           return {
             afterClosed: () => {
-              return of({ name: 'Newman' })
-            }
-          }
-        }
+              return of({ name: 'Newman' });
+            },
+          };
+        },
       }),
       mockProvider(VoterStoreService),
-      mockProvider(CandidateStoreService)
-    ]
+      mockProvider(CandidateStoreService),
+    ],
   });
 
   beforeEach(() => {
@@ -56,14 +54,14 @@ describe('OverviewComponent', () => {
   it('should add candidate', () => {
     component.addCandidate();
 
-    expect(candidateStoreService.addCandidate).toHaveBeenCalled()
-    expect(candidateStoreService.addCandidate).toHaveBeenCalledWith({ name: "Newman", numOfVotes: 0 })
+    expect(candidateStoreService.addCandidate).toHaveBeenCalled();
+    expect(candidateStoreService.addCandidate).toHaveBeenCalledWith({ name: 'Newman', numOfVotes: 0 });
   });
 
   it('should add voter', () => {
     component.addVoter();
 
-    expect(voterStoreService.addVoter).toHaveBeenCalled()
-    expect(voterStoreService.addVoter).toHaveBeenCalledWith({ name: "John", voted: false })
+    expect(voterStoreService.addVoter).toHaveBeenCalled();
+    expect(voterStoreService.addVoter).toHaveBeenCalledWith({ name: 'John', voted: false });
   });
 });

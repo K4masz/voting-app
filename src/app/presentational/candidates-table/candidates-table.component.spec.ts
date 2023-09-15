@@ -6,7 +6,7 @@ describe('CandidatesTableComponent', () => {
   let spectator: Spectator<CandidatesTableComponent>;
   let component: CandidatesTableComponent;
 
-  let createComponent = createComponentFactory({component: CandidatesTableComponent, imports:[MatTableModule]})
+  const createComponent = createComponentFactory({ component: CandidatesTableComponent, imports: [MatTableModule] });
 
   beforeEach(() => {
     spectator = createComponent();
@@ -18,14 +18,14 @@ describe('CandidatesTableComponent', () => {
   });
 
   it('should render table correctly', () => {
-    expect(spectator.query('table')).toBeTruthy()
-  })
+    expect(spectator.query('table')).toBeTruthy();
+  });
 
   it('should properly emit event about adding new voter', () => {
-    let spy = jest.spyOn(component.addCandidateEvent, 'emit');
+    const spy = jest.spyOn(component.addCandidateEvent, 'emit');
 
     component.addCandidate();
     expect(spy).toHaveBeenCalled();
     expect(spy).toHaveBeenCalledTimes(1);
-  })
+  });
 });

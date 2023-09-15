@@ -6,17 +6,19 @@ import { checkIfCandidateNameUnique } from '../../../../common/validators/valida
 @Component({
   selector: 'app-candidate-creation-form-dialog',
   templateUrl: './candidate-creation-form-dialog.component.html',
-  styleUrls: ['./candidate-creation-form-dialog.component.scss']
+  styleUrls: ['./candidate-creation-form-dialog.component.scss'],
 })
 export class CandidateCreationFormDialogComponent {
-
   theForm = this.formBuilder.group({
-    name: ['', {validators: Validators.required, asyncValidators: checkIfCandidateNameUnique(this.candidateStoreService) }]
+    name: ['', { validators: Validators.required, asyncValidators: checkIfCandidateNameUnique(this.candidateStoreService) }],
   });
 
-  constructor(private formBuilder: FormBuilder, private candidateStoreService: CandidateStoreService) { }
+  constructor(
+    private formBuilder: FormBuilder,
+    private candidateStoreService: CandidateStoreService
+  ) {}
 
-  get nameControl(){
-    return this.theForm.controls['name']
+  get nameControl() {
+    return this.theForm.controls['name'];
   }
 }
